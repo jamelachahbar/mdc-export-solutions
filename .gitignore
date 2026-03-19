@@ -82,3 +82,6 @@ coverage/
 *.key
 secrets/
 credentials/
+
+# Local configuration
+.github
