@@ -1,5 +1,5 @@
 # ============================================================================
-# Variables — Option D: CE → Event Hub → Stream Analytics → Azure SQL
+# Variables - Streaming SQL Pipeline: CE → Event Hub → Stream Analytics → Azure SQL
 # ============================================================================
 
 # ---------- General ----------

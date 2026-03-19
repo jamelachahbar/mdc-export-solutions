@@ -1,6 +1,6 @@
 # Stream Analytics → SQL Database Pipeline
 
-Deep-dive reference for the Defender for Cloud ingestion pipeline. For the deployment guide and schema reference, see [README.md](README.md).
+Deep-dive reference for the Defender for Cloud ingestion pipeline. For the deployment guide and schema reference, see [Setup-Guide-Automated.md](Setup-Guide-Automated.md).
 
 **TABLE OF CONTENTS**
 - [Continuous Export](#continuous-export)
@@ -247,15 +247,13 @@ Activity: Web / Logic App (on failure — send alert)
 
 **Pros**: Rich monitoring, retry policies, integration with Azure Monitor alerts,
 reuse if ADF is already present.  
-**Cons**: Additional service overhead if not already deployed; ADF Integration Runtime
-has a base cost.
+**Cons**: Additional service overhead if not already deployed.
 
 ---
 
 #### Alternative 2 — Azure Functions Timer Trigger (lightweight / code-driven)
 
 A small Azure Function on a Consumption plan calls the stored procedure on a timer.
-Near-zero base cost.
 
 ```csharp
 [FunctionName("ProcessDefenderFindings")]
@@ -354,7 +352,7 @@ a summary row into `dbo.MergeAudit` at the end of `usp_ProcessDefenderFindings`.
 | Concern                | Recommendation                                                           |
 |------------------------|--------------------------------------------------------------------------|
 | Scheduling engine      | **Elastic Jobs** (implemented — bootstrap creates schedule automatically) |
-| Low-cost / no-frills   | Azure Functions timer trigger on Consumption plan                        |
+| Lightweight / no-frills| Azure Functions timer trigger on Consumption plan                        |
 | Complex orchestration  | ADF if already deployed                                                  |
 | MERGE frequency        | Every 15 min for standard reporting; every 5 min for near-real-time      |
 | Raw table retention    | TRUNCATE after each successful MERGE                                     |
@@ -373,4 +371,4 @@ a summary row into `dbo.MergeAudit` at the end of `usp_ProcessDefenderFindings`.
 | `sql/usp_MergeSecuritySubAssessments.sql` | Stored procedure: MERGE sub-assessments                  |
 | `sql/Setup-ElasticJobScheduler.sql`       | Elastic Job setup reference (bootstrap automates this)   |
 | `bootstrap/`                              | Automated SQL bootstrapping (PowerShell + SQL)           |
-| `README.md`                               | Deployment guide, schema reference, troubleshooting      |
+| `Setup-Guide-Automated.md`                | Deployment guide, schema reference, troubleshooting      |

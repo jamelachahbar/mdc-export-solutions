@@ -1,6 +1,8 @@
-# Option D — CE → Event Hub → Stream Analytics → Azure SQL
+# Setup Guide - Automated (Terraform + Bootstrap)
 
-Ingest Defender for Cloud findings from Event Hub into Azure SQL using a **staging → MERGE** pattern that handles deduplication, partition fan-out, and idempotent upserts.
+Deploy the Defender for Cloud **CE → Event Hub → Stream Analytics → Azure SQL** pipeline using Terraform for infrastructure and PowerShell bootstrap scripts for SQL schema.
+
+For the solution overview, see the [README](README.md). For a manual walkthrough (Portal + SQL), see [Setup-Guide-Manual.md](Setup-Guide-Manual.md).
 
 ---
 
@@ -133,7 +135,7 @@ terraform output asa_assessments_principal_id
 terraform output asa_subassessments_principal_id
 ```
 
-For Terraform variable/output details and cost estimates, see [.infra/sql/README.md](../.infra/sql/README.md).
+For Terraform variable/output details, see [.infra/sql/README.md](../.infra/sql/README.md).
 
 
 ### Step 2 — Run Bootstrap Scripts
@@ -141,7 +143,7 @@ For Terraform variable/output details and cost estimates, see [.infra/sql/README
 The bootstrap creates SQL schema, stored procedures, and MI permissions. Terraform does not manage SQL DDL — this is intentional.
 
 ```powershell
-cd option_d-CE-EH-ASA-SQL/bootstrap/scripts/
+cd solutions/eventhub-sql-pipeline/bootstrap/scripts/
 
 ./Initialize-Bootstrap.ps1 `
     -SqlServerFqdn          "defender-sql-server.database.windows.net" `
@@ -238,7 +240,7 @@ EXEC dbo.usp_MergeSecurityAssessments;
 EXEC dbo.usp_MergeSecuritySubAssessments;
 ```
 
-For a **manual deployment** (Portal + SQL, no Terraform), see [Setup-Guide-Manual.md](Setup-Guide-Manual.md).
+For a **manual deployment** (Portal + SQL, no Terraform), see [Setup-Guide-Manual.md](Setup-Guide-Manual.md). For the solution overview, see [README.md](README.md).
 
 ---
 
@@ -703,7 +705,7 @@ The Elastic Job runs every 10 minutes by default. To change:
 |---|---|
 | Every 5 min | Near-real-time dashboards |
 | Every 15 min | Standard operational reporting |
-| Every 1 hour | Cost-conscious, batch reporting |
+| Every 1 hour | Batch reporting |
 
 For alternative scheduling options (ADF, Azure Functions, SQL Agent), see [Stream-Analytics-SQL-Pipeline.md](Stream-Analytics-SQL-Pipeline.md#alternative-scheduling-options).
 
@@ -734,7 +736,7 @@ For alternative scheduling options (ADF, Azure Functions, SQL Agent), see [Strea
 
 ## Related Documentation
 
-- [.infra/sql/README.md](../.infra/sql/README.md) — Terraform variables, outputs, cost estimates
+- [.infra/sql/README.md](../.infra/sql/README.md) — Terraform variables, outputs
 - [Stream-Analytics-SQL-Pipeline.md](Stream-Analytics-SQL-Pipeline.md) — CE details, ASA query syntax, MERGE process deep-dive, alternative scheduling
 - [Setup-Guide-Manual.md](Setup-Guide-Manual.md) — Portal-based manual deployment walkthrough
 - [bootstrap/README.md](bootstrap/README.md) — Bootstrap script parameter reference

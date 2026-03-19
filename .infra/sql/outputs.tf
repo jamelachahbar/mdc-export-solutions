@@ -1,5 +1,5 @@
 # ============================================================================
-# Outputs — Option D: CE → Event Hub → Stream Analytics → Azure SQL
+# Outputs - Streaming SQL Pipeline: CE → Event Hub → Stream Analytics → Azure SQL
 # ============================================================================
 
 # ---------- Event Hub ----------

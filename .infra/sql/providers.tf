@@ -1,7 +1,7 @@
 # ============================================================================
 # Terraform & Provider Configuration
 # ============================================================================
-# Option D: CE → Event Hub → Stream Analytics → Azure SQL → Power BI
+# Streaming SQL Pipeline: CE → Event Hub → Stream Analytics → Azure SQL → Power BI
 #
 # Uses azurerm ~> 4.0, consistent with the ADX pipeline in ../.
 

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="920" height="220">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.10"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Full connector path across all 4 stages -->
+    <path id="connector-full" d="M 155 110 C 200 110, 230 110, 280 110 L 380 110 C 420 110, 450 110, 500 110 L 600 110 C 640 110, 670 110, 720 110" fill="none"/>
+    <!-- Mask to hide dots behind intermediate icons -->
+    <mask id="dot-mask">
+      <rect width="920" height="220" fill="white"/>
+      <rect x="280" y="42" width="100" height="100" rx="14" fill="black"/>
+      <rect x="500" y="42" width="100" height="100" rx="14" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- Background -->
+  <rect width="920" height="220" rx="12" fill="#f9fafb"/>
+
+  <!-- ═══════ STAGE 1: Microsoft Defender for Cloud (official icon) ═══════ -->
+  <rect x="55" y="42" width="100" height="100" rx="14" fill="#fff" filter="url(#shadow)" opacity="0.85"/>
+  <svg x="60" y="47" width="90" height="90" viewBox="0 0 18 18">
+    <defs>
+      <linearGradient id="dfc-grad" x1="9" y1="16.795" x2="9" y2="1.205" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5e9624"/><stop offset="0.321" stop-color="#639d26"/><stop offset="0.794" stop-color="#6fb12a"/><stop offset="0.999" stop-color="#76bc2d"/>
+      </linearGradient>
+    </defs>
+    <path d="M16.083,8.438c0,4.571-5.626,8.25-6.85,9a.449.449,0,0,1-.466,0c-1.224-.747-6.85-4.426-6.85-9v-5.5A.44.44,0,0,1,2.351,2.5C6.728,2.386,5.72.5,9,.5s2.272,1.886,6.649,2a.44.44,0,0,1,.434.435Z" fill="#76bc2d"/>
+    <path d="M15.5,8.485c0,4.191-5.16,7.566-6.282,8.25a.412.412,0,0,1-.428,0C7.664,16.051,2.5,12.676,2.5,8.485V3.441a.4.4,0,0,1,.4-.4C6.916,2.935,5.992,1.205,9,1.205s2.084,1.73,6.1,1.837a.4.4,0,0,1,.4.4Z" fill="url(#dfc-grad)"/>
+    <path d="M11.853,7.66h-.408l0-1.417a2.652,2.652,0,0,0-.7-1.809,2.358,2.358,0,0,0-3.483,0,2.606,2.606,0,0,0-.7,1.808V7.66H6.147a.328.328,0,0,0-.326.32v3.682a.329.329,0,0,0,.326.32h5.706a.329.329,0,0,0,.326-.32V7.98A.328.328,0,0,0,11.853,7.66Zm-1.549,0H7.7V6.219a1.434,1.434,0,0,1,.41-.99,1.2,1.2,0,0,1,1.788,0,1.394,1.394,0,0,1,.153.2h0a1.445,1.445,0,0,1,.258.791Z" fill="#fff"/>
+    <path d="M6.148,7.658h5.705a.328.328,0,0,1,.21.08L5.938,11.9a.313.313,0,0,1-.116-.241V7.979A.328.328,0,0,1,6.148,7.658Z" fill="#b3b3b3" opacity="0.15"/>
+    <path d="M11.853,7.658H6.147a.328.328,0,0,0-.209.08L12.062,11.9a.314.314,0,0,0,.117-.241V7.979A.329.329,0,0,0,11.853,7.658Z" fill="#a3a3a3" opacity="0.09"/>
+  </svg>
+  <text x="105" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#333" font-weight="600">Defender</text>
+  <text x="105" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#666">Continuous Export</text>
+
+  <!-- Connector 1 -->
+  <line x1="170" y1="110" x2="270" y2="110" stroke="#0078D4" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+  <polygon points="270,104 270,116 284,110" fill="#0078D4" opacity="0.5"/>
+
+  <!-- ═══════ STAGE 2: Azure Event Hubs (official icon) ═══════ -->
+  <rect x="280" y="42" width="100" height="100" rx="14" fill="#fff" filter="url(#shadow)" opacity="0.85"/>
+  <svg x="285" y="47" width="90" height="90" viewBox="0 0 18 18">
+    <path d="M10.83,8.42a.26.26,0,0,1-.24.27H8.5a.26.26,0,0,1-.27-.24V6.89a.26.26,0,0,1,.24-.27h2.09a.26.26,0,0,1,.27.24V8.42Z" fill="#76bc2d"/>
+    <path d="M14.54,10a.26.26,0,0,1-.24.27H12.21a.26.26,0,0,1-.27-.24V8.48a.26.26,0,0,1,.24-.27h2.09a.26.26,0,0,1,.27.24V10Z" fill="#76bc2d"/>
+    <path d="M10.83,11.6a.26.26,0,0,1-.24.27H8.5a.26.26,0,0,1-.27-.24V10.07a.26.26,0,0,1,.24-.27h2.09a.26.26,0,0,1,.27.24V11.6Z" fill="#76bc2d"/>
+    <path d="M7.12,6.84a.25.25,0,0,1-.23.26H4.74a.26.26,0,0,1-.27-.23V5.25A.26.26,0,0,1,4.71,5H6.8c.22,0,.32.11.32.27Z" fill="#86d633"/>
+    <path d="M7.12,10a.25.25,0,0,1-.23.27H4.74A.26.26,0,0,1,4.47,10V8.42a.26.26,0,0,1,.24-.26H6.8c.22,0,.32.11.32.26Z" fill="#76bc2d"/>
+    <path d="M7.12,13.19a.25.25,0,0,1-.23.27H4.74a.26.26,0,0,1-.27-.24V11.6a.25.25,0,0,1,.24-.26H6.8c.22,0,.32.1.32.26Z" fill="#76bc2d"/>
+    <g><path d="M1.07,1.51H2.36a0,0,0,0,1,0,0v3.6a.29.29,0,0,1-.29.29H.79A.29.29,0,0,1,.5,5.11v-3A.57.57,0,0,1,1.07,1.51Z" fill="#999"/><path d="M1.07,1.51H2.36a0,0,0,0,1,0,0v3.6a.29.29,0,0,1-.29.29H.79A.29.29,0,0,1,.5,5.11v-3A.57.57,0,0,1,1.07,1.51Z" fill="#999" opacity="0.5"/></g>
+    <g><path d="M15.64,1.51h1.29a.57.57,0,0,1,.57.57v3a.29.29,0,0,1-.29.29H15.92a.29.29,0,0,1-.29-.29V1.51A0,0,0,0,1,15.64,1.51Z" fill="#999"/><path d="M15.64,1.51h1.29a.57.57,0,0,1,.57.57v3a.29.29,0,0,1-.29.29H15.92a.29.29,0,0,1-.29-.29V1.51A0,0,0,0,1,15.64,1.51Z" fill="#999" opacity="0.5"/></g>
+    <path d="M8.66-6.08H9.91a0,0,0,0,1,0,0v17a0,0,0,0,1,0,0H8.66a.57.57,0,0,1-.57-.57V-5.52A.57.57,0,0,1,8.66-6.08Z" transform="translate(11.42 -6.58) rotate(90)" fill="#949494"/>
+    <g><path d="M.79,12.76H2.08a.29.29,0,0,1,.29.29v3.6a0,0,0,0,1,0,0H1.07a.57.57,0,0,1-.57-.57V13A.29.29,0,0,1,.79,12.76Z" fill="#999"/><path d="M.79,12.76H2.08a.29.29,0,0,1,.29.29v3.6a0,0,0,0,1,0,0H1.07a.57.57,0,0,1-.57-.57V13A.29.29,0,0,1,.79,12.76Z" fill="#999" opacity="0.5"/></g>
+    <g><path d="M15.92,12.76h1.29a.29.29,0,0,1,.29.29v3a.57.57,0,0,1-.57.57H15.64a0,0,0,0,1,0,0V13A.29.29,0,0,1,15.92,12.76Z" fill="#999"/><path d="M15.92,12.76h1.29a.29.29,0,0,1,.29.29v3a.57.57,0,0,1-.57.57H15.64a0,0,0,0,1,0,0V13A.29.29,0,0,1,15.92,12.76Z" fill="#999" opacity="0.5"/></g>
+    <path d="M8.66,7.24H9.91a0,0,0,0,1,0,0v17a0,0,0,0,1,0,0H8.66a.57.57,0,0,1-.57-.57V7.81A.57.57,0,0,1,8.66,7.24Z" transform="translate(-6.74 24.74) rotate(-90)" fill="#949494"/>
+  </svg>
+  <text x="330" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#333" font-weight="600">Event Hub</text>
+  <text x="330" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#666">2 hubs</text>
+
+  <!-- Connector 2 -->
+  <line x1="390" y1="110" x2="490" y2="110" stroke="#0078D4" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+  <polygon points="490,104 490,116 504,110" fill="#0078D4" opacity="0.5"/>
+
+  <!-- ═══════ STAGE 3: Azure Stream Analytics (official icon) ═══════ -->
+  <rect x="500" y="42" width="100" height="100" rx="14" fill="#fff" filter="url(#shadow)" opacity="0.85"/>
+  <svg x="505" y="47" width="90" height="90" viewBox="0 0 18 18">
+    <defs>
+      <linearGradient id="sa-grad" x1="11.08" y1="31.2" x2="11.08" y2="15.71" gradientTransform="translate(0 -14.32) scale(1 0.99)" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#949494"/><stop offset="0.33" stop-color="#9b9b9b"/><stop offset="0.82" stop-color="#aeafb0"/><stop offset="1" stop-color="#b6b8b9"/>
+      </linearGradient>
+    </defs>
+    <path d="M18,9.69V7.9l-.1-.09-1.84-.62L15.59,6l.91-1.88.1-.21L16,3.3l-.7-.69-.24.12-1.8.91L12.05,3.3l-.78-2H9.48l-.09.09L8.77,3.22l-1.26.47-2.08-1L4.15,3.94l.12.24L5.23,6a6,6,0,0,1,3.2-.86A6.26,6.26,0,0,1,12,6.28a3.32,3.32,0,0,1,.36.26l0,0a3.25,3.25,0,0,1,.93,1.35h0A3,3,0,0,1,13.5,9a3.23,3.23,0,0,1-3.25,3.23,3.27,3.27,0,0,1-1.87-.59,6.31,6.31,0,0,1-4,1.75l-.19.39,1.28,1.29L5.73,15,7.53,14l1.24.51.79,2.16h1.8l.07-.25.64-1.91L13.29,14l2.11,1,1.27-1.26-.12-.24-.93-1.79L16,10.46Z" fill="url(#sa-grad)"/>
+    <path d="M4,10.65H4A3.6,3.6,0,0,1,1.44,9.6.46.46,0,1,1,2.09,9,2.65,2.65,0,0,0,4,9.73H4A2.62,2.62,0,0,0,5.88,9a3.55,3.55,0,0,1,2.55-1A3.64,3.64,0,0,1,11,9a.46.46,0,1,1-.65.65,2.69,2.69,0,0,0-1.89-.78h0a2.61,2.61,0,0,0-1.88.78A3.61,3.61,0,0,1,4,10.65Z" fill="#50e6ff"/>
+    <path d="M4,8.82H4A1.79,1.79,0,0,1,2.74,8.3a.46.46,0,0,1,.65-.65A.84.84,0,0,0,4,7.9H4a1.08,1.08,0,0,0,.6-.25,5.46,5.46,0,0,1,7.67,0,.46.46,0,0,1-.65.65,4.55,4.55,0,0,0-6.41,0A1.94,1.94,0,0,1,4,8.82Z" fill="#50e6ff"/>
+    <path d="M4,12.48A5.41,5.41,0,0,1,.13,10.89a.47.47,0,0,1,0-.64.47.47,0,0,1,.66,0A4.47,4.47,0,0,0,4,11.57,4.5,4.5,0,0,0,7.2,10.24a1.94,1.94,0,0,1,1.21-.49,1.83,1.83,0,0,1,1.25.52.46.46,0,0,1,0,.65.47.47,0,0,1-.66,0,.83.83,0,0,0-.59-.25h0a1,1,0,0,0-.6.26A5.41,5.41,0,0,1,4,12.48Z" fill="#32bedd"/>
+  </svg>
+  <text x="550" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#333" font-weight="600">Stream Analytics</text>
+  <text x="550" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#666">passthrough</text>
+
+  <!-- Connector 3 -->
+  <line x1="610" y1="110" x2="710" y2="110" stroke="#0078D4" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+  <polygon points="710,104 710,116 724,110" fill="#0078D4" opacity="0.5"/>
+
+  <!-- ═══════ STAGE 4: Azure SQL Database (official icon) ═══════ -->
+  <rect x="720" y="42" width="100" height="100" rx="14" fill="#fff" filter="url(#shadow)" opacity="0.85"/>
+  <svg x="725" y="47" width="90" height="90" viewBox="0 0 18 18">
+    <defs>
+      <linearGradient id="sql-grad" x1="2.59" y1="10.16" x2="15.41" y2="10.16" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#005ba1"/><stop offset="0.07" stop-color="#0060a9"/><stop offset="0.36" stop-color="#0071c8"/><stop offset="0.52" stop-color="#0078d4"/><stop offset="0.64" stop-color="#0074cd"/><stop offset="0.82" stop-color="#006abb"/><stop offset="1" stop-color="#005ba1"/>
+      </linearGradient>
+      <radialGradient id="sql-rgrad" cx="9.36" cy="10.57" r="7.07" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#f2f2f2"/><stop offset="0.58" stop-color="#eee"/><stop offset="1" stop-color="#e6e6e6"/>
+      </radialGradient>
+    </defs>
+    <path d="M9,5.14c-3.54,0-6.41-1-6.41-2.32V15.18c0,1.27,2.82,2.3,6.32,2.32H9c3.54,0,6.41-1,6.41-2.32V2.82C15.41,4.11,12.54,5.14,9,5.14Z" fill="url(#sql-grad)"/>
+    <path d="M15.41,2.82c0,1.29-2.87,2.32-6.41,2.32s-6.41-1-6.41-2.32S5.46.5,9,.5s6.41,1,6.41,2.32" fill="#e8e8e8"/>
+    <path d="M13.92,2.63c0,.82-2.21,1.48-4.92,1.48S4.08,3.45,4.08,2.63,6.29,1.16,9,1.16s4.92.66,4.92,1.47" fill="#50e6ff"/>
+    <path d="M9,3a11.55,11.55,0,0,0-3.89.57A11.42,11.42,0,0,0,9,4.11a11.15,11.15,0,0,0,3.89-.58A11.84,11.84,0,0,0,9,3Z" fill="#198ab3"/>
+    <path d="M12.9,11.4V8H12v4.13h2.46V11.4ZM5.76,9.73a1.83,1.83,0,0,1-.51-.31.44.44,0,0,1-.12-.32.34.34,0,0,1,.15-.3.68.68,0,0,1,.42-.12,1.62,1.62,0,0,1,1,.29V8.11a2.58,2.58,0,0,0-1-.16,1.64,1.64,0,0,0-1.09.34,1.08,1.08,0,0,0-.42.89c0,.51.32.91,1,1.21a2.88,2.88,0,0,1,.62.36.42.42,0,0,1,.15.32.38.38,0,0,1-.16.31.81.81,0,0,1-.45.11,1.66,1.66,0,0,1-1.09-.42V12a2.17,2.17,0,0,0,1.07.24,1.88,1.88,0,0,0,1.18-.33A1.08,1.08,0,0,0,6.84,11a1.05,1.05,0,0,0-.25-.7A2.42,2.42,0,0,0,5.76,9.73ZM11,11.32a2.34,2.34,0,0,0,.33-1.26A2.32,2.32,0,0,0,11,9a1.81,1.81,0,0,0-.7-.75,2,2,0,0,0-1-.26,2.11,2.11,0,0,0-1.08.27A1.86,1.86,0,0,0,7.49,9a2.46,2.46,0,0,0-.26,1.14,2.26,2.26,0,0,0,.24,1,1.76,1.76,0,0,0,.69.74,2.06,2.06,0,0,0,1,.3l.86,1h1.21L10,12.08A1.79,1.79,0,0,0,11,11.32ZM10,11.07a.94.94,0,0,1-.76.35.92.92,0,0,1-.76-.36,1.52,1.52,0,0,1-.29-1,1.53,1.53,0,0,1,.29-1,1,1,0,0,1,.78-.37.87.87,0,0,1,.75.37,1.62,1.62,0,0,1,.27,1A1.46,1.46,0,0,1,10,11.07Z" fill="url(#sql-rgrad)"/>
+  </svg>
+  <text x="770" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#333" font-weight="600">Azure SQL</text>
+  <text x="770" y="205" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#666">staging → merge → typed</text>
+
+  <!-- ═══════ ANIMATED DATA DOTS ═══════ -->
+  <g mask="url(#dot-mask)">
+    <circle r="5" fill="#0078D4" filter="url(#glow)">
+      <animateMotion dur="3.5s" repeatCount="indefinite">
+        <mpath href="#connector-full"/>
+      </animateMotion>
+      <animate attributeName="opacity" values="0;1;1;1;0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="3.5" fill="#50a0e6" filter="url(#glow)">
+      <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.75s">
+        <mpath href="#connector-full"/>
+      </animateMotion>
+      <animate attributeName="opacity" values="0;0.8;0.8;0.8;0" dur="3.5s" repeatCount="indefinite" begin="1.75s"/>
+    </circle>
+  </g>
+
+  <!-- Title -->
+  <text x="910" y="22" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="11" fill="#999" font-style="italic">Event Hub SQL Pipeline</text>
+</svg>

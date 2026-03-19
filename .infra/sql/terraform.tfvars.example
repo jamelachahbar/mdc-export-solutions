@@ -1,5 +1,5 @@
 # ============================================================================
-# Example variable values — Option D: SQL Pipeline
+# Example variable values - Streaming SQL Pipeline
 # ============================================================================
 # Copy this file to terraform.tfvars and update values for your environment.
 

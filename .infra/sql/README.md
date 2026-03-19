@@ -1,8 +1,8 @@
-# Terraform — SQL Pipeline Infrastructure
+# Terraform - Streaming SQL Pipeline Infrastructure
 
-Terraform configuration for the **CE → Event Hub → Stream Analytics → Azure SQL** pipeline (Option D).
+Terraform configuration for the **CE → Event Hub → Stream Analytics → Azure SQL** streaming pipeline.
 
-For the full deployment guide, schema reference, and troubleshooting, see [option_d-CE-EH-ASA-SQL/README.md](../../option_d-CE-EH-ASA-SQL/README.md).
+For the full deployment guide, schema reference, and troubleshooting, see [eventhub-sql-pipeline/README.md](../../solutions/eventhub-sql-pipeline/README.md).
 
 ## What Terraform Creates
 
@@ -22,27 +22,12 @@ For the full deployment guide, schema reference, and troubleshooting, see [optio
 
 ## What Terraform Does NOT Create
 
-Handled by the **bootstrap scripts** (`option_d-CE-EH-ASA-SQL/bootstrap/`):
+Handled by the **bootstrap scripts** (`solutions/eventhub-sql-pipeline/bootstrap/`):
 
 - SQL schema (raw tables, typed tables, indexes)
 - Stored procedures (`usp_MergeSecurityAssessments`, `usp_MergeSecuritySubAssessments`)
 - SQL permissions (ASA MI users, Elastic Job UMI permissions)
 - Elastic Job target group, job, and steps
-
-## Estimated Monthly Cost
-
-| Resource | SKU | Est. Cost |
-|----------|-----|-----------|
-| Event Hub Namespace | Basic | ~$11 |
-| SQL Server (Findings) | GP_S_Gen5_2 (serverless) | ~$5–50 (auto-pause) |
-| SQL Server (Job Metadata) | S0 | ~$15 |
-| Stream Analytics × 2 | 1 SU each | ~$160 |
-| Elastic Job Agent | — | ~$100 |
-| User-Assigned MI | — | Free |
-| CE Automations | — | Free |
-| **Total** | | **~$291–336/mo** |
-
-> Stream Analytics is the largest cost driver. Consider stopping ASA jobs during periods of no expected data flow.
 
 ## File Structure
 

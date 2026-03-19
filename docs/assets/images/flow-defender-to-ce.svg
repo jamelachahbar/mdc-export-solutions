@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="800" height="220">
+  <defs>
+    <!-- Subtle drop shadow for icons -->
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.10"/>
+    </filter>
+    <!-- Glow for the data dot -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Connector path (used for both the visible line and motion path) -->
+    <path id="connector" d="M 230 110 C 320 110, 360 110, 450 110" fill="none"/>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="220" rx="12" fill="#f9fafb"/>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       LEFT ICON - Microsoft Defender for Cloud (official icon)
+       ════════════════════════════════════════════════════════════════ -->
+  <rect x="95" y="38" width="130" height="130" rx="16" fill="#fff" filter="url(#shadow)" opacity="0.85"/>
+  <svg x="105" y="48" width="110" height="110" viewBox="0 0 18 18">
+    <defs>
+      <linearGradient id="dfc-hero-grad" x1="9" y1="16.795" x2="9" y2="1.205" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5e9624"/><stop offset="0.321" stop-color="#639d26"/><stop offset="0.794" stop-color="#6fb12a"/><stop offset="0.999" stop-color="#76bc2d"/>
+      </linearGradient>
+    </defs>
+    <path d="M16.083,8.438c0,4.571-5.626,8.25-6.85,9a.449.449,0,0,1-.466,0c-1.224-.747-6.85-4.426-6.85-9v-5.5A.44.44,0,0,1,2.351,2.5C6.728,2.386,5.72.5,9,.5s2.272,1.886,6.649,2a.44.44,0,0,1,.434.435Z" fill="#76bc2d"/>
+    <path d="M15.5,8.485c0,4.191-5.16,7.566-6.282,8.25a.412.412,0,0,1-.428,0C7.664,16.051,2.5,12.676,2.5,8.485V3.441a.4.4,0,0,1,.4-.4C6.916,2.935,5.992,1.205,9,1.205s2.084,1.73,6.1,1.837a.4.4,0,0,1,.4.4Z" fill="url(#dfc-hero-grad)"/>
+    <path d="M11.853,7.66h-.408l0-1.417a2.652,2.652,0,0,0-.7-1.809,2.358,2.358,0,0,0-3.483,0,2.606,2.606,0,0,0-.7,1.808V7.66H6.147a.328.328,0,0,0-.326.32v3.682a.329.329,0,0,0,.326.32h5.706a.329.329,0,0,0,.326-.32V7.98A.328.328,0,0,0,11.853,7.66Zm-1.549,0H7.7V6.219a1.434,1.434,0,0,1,.41-.99,1.2,1.2,0,0,1,1.788,0,1.394,1.394,0,0,1,.153.2h0a1.445,1.445,0,0,1,.258.791Z" fill="#fff"/>
+    <path d="M6.148,7.658h5.705a.328.328,0,0,1,.21.08L5.938,11.9a.313.313,0,0,1-.116-.241V7.979A.328.328,0,0,1,6.148,7.658Z" fill="#b3b3b3" opacity="0.15"/>
+    <path d="M11.853,7.658H6.147a.328.328,0,0,0-.209.08L12.062,11.9a.314.314,0,0,0,.117-.241V7.979A.329.329,0,0,0,11.853,7.658Z" fill="#a3a3a3" opacity="0.09"/>
+  </svg>
+
+  <!-- Left label -->
+  <text x="160" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#333" font-weight="600">Defender for Cloud</text>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       CONNECTOR LINE with arrow
+       ════════════════════════════════════════════════════════════════ -->
+  <use href="#connector" stroke="#0078D4" stroke-width="2" stroke-dasharray="6 4" opacity="0.5"/>
+  <!-- Arrowhead -->
+  <polygon points="450,104 450,116 464,110" fill="#0078D4" opacity="0.6"/>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       ANIMATED DATA DOT
+       A glowing circle that travels along the connector path
+       ════════════════════════════════════════════════════════════════ -->
+  <circle r="6" fill="#0078D4" filter="url(#glow)">
+    <animateMotion dur="2.5s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#connector"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;1;0" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Second dot offset by half cycle for continuous flow feel -->
+  <circle r="4" fill="#50a0e6" filter="url(#glow)">
+    <animateMotion dur="2.5s" repeatCount="indefinite" rotate="auto" begin="1.25s">
+      <mpath href="#connector"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;0.8;0.8;0.8;0" dur="2.5s" repeatCount="indefinite" begin="1.25s"/>
+  </circle>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       RIGHT ICON - Continuous Export (cloud + upload arrow)
+       ════════════════════════════════════════════════════════════════ -->
+  <g transform="translate(470, 50)" filter="url(#shadow)">
+    <!-- Cloud shape -->
+    <path d="M 95 90 L 25 90 C 11 90 0 79 0 65 C 0 53 8 43 20 40 C 18 28 27 16 40 14 C 50 12 60 18 64 28 C 68 22 76 18 85 20 C 96 22 104 32 104 44 C 116 46 124 56 124 68 C 124 80 114 90 100 90 Z"
+          fill="#0078D4" opacity="0.85"/>
+    <!-- Upload arrow (export symbol) -->
+    <line x1="62" y1="78" x2="62" y2="48" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <polyline points="46,60 62,44 78,60" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Right label -->
+  <text x="534" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#333" font-weight="600">Continuous Export</text>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       TITLE (top-right area, subtle)
+       ════════════════════════════════════════════════════════════════ -->
+  <text x="790" y="24" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="11" fill="#999" font-style="italic">Security findings flow</text>
+</svg>

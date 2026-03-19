@@ -2,7 +2,7 @@
 
 Step-by-step manual deployment of the **CE → Event Hub → Stream Analytics → Azure SQL → Elastic Jobs** pipeline without Terraform. Use this guide when deploying through the Azure Portal and SQL tooling directly.
 
-For the automated (Terraform + Bootstrap) approach, see [README.md](README.md).
+For the automated (Terraform + Bootstrap) approach, see [Setup-Guide-Automated.md](Setup-Guide-Automated.md).
 
 ## Prerequisites
 
@@ -145,7 +145,7 @@ Connect to the **Findings Database** (`DefenderVulnerability`) using an Entra-au
 If you have PowerShell 7+ and the `SqlServer` module:
 
 ```powershell
-cd option_d-CE-EH-ASA-SQL/bootstrap/scripts/
+cd solutions/eventhub-sql-pipeline/bootstrap/scripts/
 
 # This creates tables, stored procedures, and permissions in one go
 ./Initialize-Bootstrap.ps1 `
@@ -393,7 +393,7 @@ az stream-analytics job start \
 
 ### 8b. Verify the Full Pipeline
 
-See the [Verification checklist](README.md#step-5--wait-for-data-and-verify) in the main README for expected data arrival timings, SQL verification queries, and troubleshooting steps.
+See the [Verification checklist](Setup-Guide-Automated.md#step-5--wait-for-data-and-verify) in the automated setup guide for expected data arrival timings, SQL verification queries, and troubleshooting steps.
 
 ---
 
@@ -402,7 +402,7 @@ See the [Verification checklist](README.md#step-5--wait-for-data-and-verify) in 
 | Issue | Detail |
 |-------|--------|
 | **CE delivers zero events** | Check that `disableLocalAuth` is `false` on the Event Hub namespace (for SAS mode), or that trusted service mode is configured with proper RBAC. |
-| **Job Metadata DB must be S0+** | Elastic Job Agent does not support serverless SKUs. Use Standard S0 ($15/mo). |
+| **Job Metadata DB must be S0+** | Elastic Job Agent does not support serverless SKUs. Use Standard S0. |
 | **ASA enrichment column differs** | Assessments use `assessmentEventDataEnrichment`, sub-assessments use `subAssessmentEventDataEnrichment`. Using the wrong column name causes ASA to error or drop data. |
 | **CE JSON is ARM format** | CE sends `properties.status.code`, not `RecommendationState`. The MERGE procs handle this transformation. Don't try to map CE fields directly to typed column names. |
 | **KQL property access is case-sensitive** | CE uses `resourceDetails.id` (lowercase `i`). The MERGE procs use `OPENJSON` with explicit paths. |
@@ -427,6 +427,6 @@ See: [Continuous export behind a firewall](https://learn.microsoft.com/en-us/azu
 
 ## Related Documentation
 
-- [Setup-Guide.md](Setup-Guide.md) — Automated deployment with Terraform + bootstrap
+- [Setup-Guide-Automated.md](Setup-Guide-Automated.md) — Automated deployment with Terraform + bootstrap
 - [Stream-Analytics-SQL-Pipeline.md](Stream-Analytics-SQL-Pipeline.md) — Architecture deep-dive, ASA queries, MERGE logic
-- [.infra/sql/README.md](../.infra/sql/README.md) — Terraform deployment reference
+- [.infra/sql/README.md](../../.infra/sql/README.md) — Terraform deployment reference

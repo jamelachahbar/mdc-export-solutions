@@ -1,6 +1,6 @@
 # SQL Bootstrap Package
 
-Repeatable, idempotent bootstrap for initializing the SQL pipeline databases. For full deployment context, see [option_d-CE-EH-ASA-SQL/README.md](../README.md).
+Repeatable, idempotent bootstrap for initializing the SQL pipeline databases. For full deployment context, see [Setup-Guide-Automated.md](../Setup-Guide-Automated.md).
 
 ## What It Creates
 
