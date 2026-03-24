@@ -2,9 +2,6 @@
 // Azure Resource Graph — Defender for Cloud Analytical Queries
 // =============================================================================
 //
-// Equivalent of defender-aging-reoccurrence-queries.kql (Log Analytics) and
-// adx-dashboard-functions.kql (ADX) — adapted for Azure Resource Graph.
-//
 // Target:  securityresources (Azure Resource Graph)
 // Run in:  Azure Portal → Resource Graph Explorer, or via Search-AzGraph
 //
@@ -34,27 +31,13 @@
 //   properties.impact                      — Potential impact
 //   properties.category                    — Finding category
 //   properties.resourceDetails.id          — Assessed resource ARM ID
-//
-// LIMITATIONS vs Log Analytics / ADX:
-//   - ARG is point-in-time (current snapshot only) — NO historical data
-//   - Reoccurrence detection is NOT possible (requires Healthy→Unhealthy transitions)
-//   - Daily/monthly trend analysis is NOT possible (no TimeGenerated history)
-//   - ARG has a 1,000 row limit per page — use pagination for large result sets
-//
-// ARG-ONLY ADVANTAGES (not available in Log Analytics):
-//   - Risk level, risk factors, attack paths (CSPM enrichment)
-//   - Exemption cause detection (status.cause == "Exempt")
-//   - Governance assignment status (owner, due date, overdue)
-//   - Multi-cloud source identification (Azure, AWS, GCP, GitHub, etc.)
-//   - No dependency on Continuous Export — queries live data directly
-//
+
 // =============================================================================
 
 
 // =============================================================================
 // 1. OVERVIEW — Current State Summary
 // =============================================================================
-// Mirrors: Log Analytics queries 1a–1c, ADX ExecutiveSummary()
 
 // 1a. Total counts by status (with risk breakdown)
 securityresources
@@ -109,7 +92,6 @@ securityresources
 // =============================================================================
 // 2. AGING ANALYSIS — Time since first evaluation
 // =============================================================================
-// Mirrors: Log Analytics queries 2e–2g, ADX AgingDistribution() / AgingSeverity()
 //
 // Uses properties.status.firstEvaluationDate for authoritative aging.
 // Fallback to properties.status.statusChangeDate when firstEvaluationDate is empty.
@@ -223,7 +205,6 @@ securityresources
 // =============================================================================
 // 3. RISK ANALYSIS — ARG-only (CSPM enrichment data)
 // =============================================================================
-// NOT available in Log Analytics — requires Azure Resource Graph.
 // Risk levels (Critical/High/Medium/Low) come from Defender CSPM attack path analysis.
 
 // 3a. Risk level distribution
@@ -289,7 +270,6 @@ securityresources
 // =============================================================================
 // 4. TOP RECOMMENDATIONS — Pareto analysis
 // =============================================================================
-// Mirrors: ADX TopRecommendations()
 
 // 4a. Top 25 recommendations by affected resource count
 securityresources
@@ -333,7 +313,6 @@ securityresources
 // =============================================================================
 // 5. SEVERITY × RESOURCE TYPE HEATMAP
 // =============================================================================
-// Mirrors: ADX SeverityResourceHeatmap()
 
 // 5a. Finding counts at the intersection of severity and resource type
 securityresources
@@ -362,8 +341,6 @@ securityresources
 // =============================================================================
 // 6. EXEMPTIONS / NOT APPLICABLE — Exemption analysis
 // =============================================================================
-// Mirrors: Understanding-NotApplicable-and-Exemptions.md queries (adapted for ARG)
-// ARG-only: properties.status.cause == "Exempt" identifies manually exempted resources
 
 // 6a. Exemption summary — total exempted vs active
 securityresources
@@ -465,7 +442,6 @@ securityresources
 // =============================================================================
 // 8. SUB-ASSESSMENTS — Vulnerability-level analysis
 // =============================================================================
-// Mirrors: Log Analytics SecurityNestedRecommendation queries
 // ARG type: microsoft.security/assessments/subassessments
 
 // 8a. Sub-assessment status summary
@@ -534,7 +510,6 @@ securityresources
 // =============================================================================
 // 9. GOVERNANCE ASSIGNMENTS — Remediation tracking
 // =============================================================================
-// ARG-only: Governance assignments are not available in Log Analytics / ADX.
 // Joins assessments with governanceassignments to show ownership and due dates.
 
 // 9a. Governance status summary
