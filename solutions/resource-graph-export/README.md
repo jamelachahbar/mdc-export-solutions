@@ -20,7 +20,7 @@ Azure Resource Graph lets you query security findings across all subscriptions u
 
 | File | Description |
 |------|-------------|
-| [Export-ArgFindings.ps1](Export-ArgFindings.ps1) | Export ARG security findings to CSV |
+| [Export-ArgFindings.ps1](Export-ArgFindings.ps1) | Export ARG security findings to CSV or Storage Account |
 | [Export-ForPowerBI.ps1](Export-ForPowerBI.ps1) | Export findings for Power BI (CSV & Log Analytics modes) |
 | [resourcegraph.kql](resourcegraph.kql) | KQL queries used by the export scripts |
 
